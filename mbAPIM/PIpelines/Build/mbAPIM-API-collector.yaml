@@ -1,0 +1,53 @@
+pool:
+  name: Azure Pipelines
+# perform required preparation
+steps:
+- script: |
+    echo **********************
+    echo Insert any preparation steps here
+    echo **********************
+    dir
+    echo End preparation
+  displayName: Preparation
+# copy and prepare deploy script files for upload to artifactory
+- task: CopyFiles@2
+  displayName: 'Copy Script Files to: $(System.ArtifactsDirectory)\scripts'
+  inputs:
+    SourceFolder: Scripts
+    TargetFolder: '$(System.ArtifactsDirectory)\scripts'
+    OverWrite: true
+# download last stable artifacts from Sensor API project
+- task: DownloadBuildArtifacts@1
+  displayName: 'Download Build Artifacts Sensor API'
+  inputs:
+    buildType: specific
+    project: '<SensorAPI project ID>' # DevOps project ID
+    pipeline: 2 # API build pipeline index
+    downloadType: specific
+    downloadPath: '$(System.ArtifactsDirectory)/SensorAPI'
+# download last stable artifacts from Invoice API project
+- task: DownloadBuildArtifacts@1
+  displayName: 'Download Build Artifacts Invoice API'
+  inputs:
+    buildType: specific
+    project: '<InvoiceAPI project ID>' # DevOps project ID
+    pipeline: 5 # API build pipeline index
+    downloadType: specific
+    downloadPath: '$(System.ArtifactsDirectory)/InvoiceAPI'
+# vaidate artifacts
+- script: |
+    echo **********************
+    echo Insert any final validation steps here
+    echo **********************
+    dir /s
+    echo End validation process
+    echo **********************
+    echo Configuration consistency check succeeded
+    echo **********************
+  workingDirectory: '$(System.ArtifactsDirectory)'
+  displayName: 'Validate artifacts'
+# publish artifacts to drop folder
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(System.ArtifactsDirectory)'

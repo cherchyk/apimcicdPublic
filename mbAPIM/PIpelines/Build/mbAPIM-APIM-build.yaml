@@ -1,0 +1,26 @@
+pool:
+  name: Azure Pipelines
+steps:
+# perform optional preparation
+- script: |
+    echo Start preparation
+    echo ******************
+    echo "Executing in folder"
+    dir
+    echo End preparation
+  displayName: Preparation
+# perform optinal preprocessing and validation
+- script: |
+    echo Start preprocessing
+    echo ******************
+    echo "Executing in folder"
+    dir /s
+    echo End preprocessing
+  workingDirectory: '$(System.ArtifactsDirectory)'
+  displayName: 'Validate templates'
+# publish artifacts to APIM-drop
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish APIM artifacts: drop' 
+  inputs:
+    PathtoPublish: APIM/mbapim
+    ArtifactName: 'APIM-drop'
