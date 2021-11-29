@@ -1,0 +1,9 @@
+steps:
+- task: AzurePowerShell@5
+  displayName: 'Azure PowerShell script: deploy APIM instance'
+  inputs:
+    azureSubscription: <Azure subscription service connection - as configured in DevOps project>
+    ScriptPath: '$(System.DefaultWorkingDirectory)/mbapim-APIM-build/APIM-drop/mbapim-deploy.ps1' # path to deployment script
+    ScriptArguments: '-owner APIMCS -workload test' # optionally - script parameters
+    preferredAzurePowerShellVersion: 3.1.0
+    workingDirectory: '$(System.DefaultWorkingDirectory)/mbapim-collector-drop'    
