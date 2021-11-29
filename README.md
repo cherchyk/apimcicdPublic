@@ -26,6 +26,7 @@ The development and deployment processes are implemented with Azure DevOps and l
 
 - Each API Dev team works in an isolated Azure DevOps project.
 - Such a project contains at least one repository to maintain API definitions, deployment scripts and satellite assets.
+![Repository!](mbAPIM/res/images/sensor-repo.png "Sensor API")
 - Optionally, each API Dev team may use an own APIM developmentg instance for development, test and stabilizing purposes.
 - Each API Dev project contains at least one build pipeline, which collects, validates and publishes to pipeline artifactory the deployment components (API definitions, deployment scripts and satellite assets).
 - Each build pipeline should publish only stable artifacts (which do not break deployment, do not collide with other possible APIs on th same instance, doi not violate compliance rules, do not break or degrade the overall functionality of the APIM instance - repsonsibility of the API Dev team by the validation routines in the build pipeline).
@@ -35,6 +36,8 @@ The development and deployment processes are implemented with Azure DevOps and l
 
 - There's a central Azure DevOps projects assigned to the APIM operating staff, who only eligible to change configuration of the prod or test APIM instances.
 - This project contains at least one repository to maintain APIM templates, parameters, deployment scripts and satellite assets to deploy the APIM instance (without APIs and products).
+![Central repository!](mbAPIM/res/images/mbAPIM-repo.png "Central repository")
 - This repository must maintain deployment scripts for APIs (but not the API definitions etc. themselves).
 - There's a collector pipeline, which downloads the last stable API artifacts from each API development project, collects them in separate subfolders, performs validation and publishes to pipeline artifactory.
 - There's at least one release pipeline, which donwloads the collected API definitions and deploys them to the target APIM instance (prod, test, ...).
+![Release!](mbAPIM/res/images/release-api.png "Release API")
