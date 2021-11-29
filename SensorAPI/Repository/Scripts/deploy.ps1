@@ -1,0 +1,1 @@
+Write-Host "Deploy API defintions to the Dev APIM instance"

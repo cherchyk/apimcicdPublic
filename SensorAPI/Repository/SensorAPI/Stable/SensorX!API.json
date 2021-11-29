@@ -1,0 +1,66 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "SensorX1API",
+        "description": "",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://replace_with_your_service_url.azure-api.net/SensorX1"
+        }
+    ],
+    "paths": {
+        "/*": {
+            "put": {
+                "summary": "sensorx1_PUT",
+                "operationId": "614bc03d98ab8724d4adff0d",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            },
+            "get": {
+                "summary": "sensorx1_GET",
+                "operationId": "614bc03dfbd94bf592121a82",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            },
+            "post": {
+                "summary": "sensorx1_POST",
+                "operationId": "614bc03d1c773be8d2ea0b14",
+                "responses": {
+                    "200": {
+                        "description": null
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}

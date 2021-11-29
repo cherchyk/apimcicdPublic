@@ -1,0 +1,28 @@
+pool:
+  name: Azure Pipelines
+steps:
+
+# perform required preparation
+- script: |
+    echo Start preparation
+    echo ******************
+    echo "Executing in folder"
+    dir
+    echo End preparation      
+
+  displayName: Preparation
+
+# deploy APIs to dev instance using project specific script
+- task: AzurePowerShell@5
+  displayName: 'Azure PowerShell script: deploy API to APIM dev instance'
+  inputs:
+  azureSubscription: '<azureSubscription name and ID>'
+  ScriptPath: Scripts/deploy.ps1
+  preferredAzurePowerShellVersion: 3.1.0
+
+# publish build results to pipeline's artifact
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+  PathtoPublish: Stable
+
