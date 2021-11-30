@@ -32,6 +32,9 @@ The development and deployment processes are implemented with Azure DevOps and l
 - Optionally, each API Dev team may use an own APIM developmentg instance for development, test and stabilizing purposes.
 - Each API Dev project contains at least one build pipeline, which collects, validates and publishes to pipeline artifactory the deployment components (API definitions, deployment scripts and satellite assets).
 - Each build pipeline should publish only stable artifacts (which do not break deployment, do not collide with other possible APIs on th same instance, doi not violate compliance rules, do not break or degrade the overall functionality of the APIM instance - repsonsibility of the API Dev team by the validation routines in the build pipeline).
+
+
+![Collector pipeline!](mbAPIM/res/images/collectorJob.png "Collector pipeline")
 - The build pipelines runs are unsynchronized between different API Dev teams.
   
 ## API deployment
@@ -47,3 +50,8 @@ The development and deployment processes are implemented with Azure DevOps and l
 
 
 ![Release!](mbAPIM/res/images/release-api.png "Release API")
+
+
+![releaseJob!](mbAPIM/res/images/release-job.png)
+
+![Release step!](mbAPIM/res/images/step-parameters.png)
