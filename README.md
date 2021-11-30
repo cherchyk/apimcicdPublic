@@ -49,9 +49,18 @@ The development and deployment processes are implemented with Azure DevOps and l
 - There's at least one release pipeline, which donwloads the collected API definitions and deploys them to the target APIM instance (prod, test, ...).
 
 
+The release pipeline example:
+
+
 ![Release!](mbAPIM/res/images/release-api.png "Release API")
 
 
+The release job:
+
+
 ![releaseJob!](mbAPIM/res/images/release-job.png)
+
+The step parameters:
+
 
 ![Release step!](mbAPIM/res/images/step-parameters.png)
