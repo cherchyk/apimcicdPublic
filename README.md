@@ -20,6 +20,9 @@ Following approach design is implemented to satisfy requirements:
 
 ![Approach!](mbAPIM/res/images/approach.png "CI/CD approach")
 
+[Slide deck](/API%20CI-CD-20211206.pdf "Slide deck") 
+
+
 The development and deployment processes are implemented with Azure DevOps and look like following:
 
 ## API development
